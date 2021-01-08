@@ -4,6 +4,8 @@ import com.loando.userService.enums.UserType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -34,8 +36,10 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
+    @NotFound(action = NotFoundAction.IGNORE)
     public Set<Document> document;
 
     @OneToOne(mappedBy = "user")
+    @NotFound(action = NotFoundAction.IGNORE)
     private BankDetails bankDetails;
 }
