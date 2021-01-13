@@ -14,6 +14,6 @@ public class PingController {
 
     @GetMapping
     public String ping(){
-        return "Pong with port : " + environment.getProperty("local.server.port");
+        return "Pong with port : " + environment.getProperty("token.signing.key");
     }
 }
